@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pulsar 150 Digital Speedometer</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Supabase CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="config.js"></script>
+    <script defer src="app.js"></script>
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- TOP STATUS -->
+    <header class="top-status">
+        <span>◷</span>
+        <span>⚠</span>
+        <span>♧</span>
+        <span>▣</span>
+        <span>ⒶⒷⓈ</span>
+    </header>
+
+    <!-- SPEED AND DISTANCE GAUGES -->
+    <section class="gauges">
+
+        <!-- SPEEDOMETER -->
+        <div class="gauge-card">
+
+            <div class="gauge">
+
+                <svg viewBox="0 0 300 300">
+                    <circle class="outer-ring"
+                        cx="150" cy="150" r="137"/>
+
+                    <circle class="inner-ring"
+                        cx="150" cy="150" r="112"/>
+
+                    <path class="gauge-arc"
+                        d="M 86 246 A 112 112 0 1 1 214 246"/>
+                </svg>
+
+                <div class="gauge-center">
+                    <div id="speed">0</div>
+                    <span>km/h</span>
+                </div>
+
+                <div class="gauge-caption">SPEED</div>
+
+            </div>
+
+        </div>
+
+
+        <!-- DISTANCE METER -->
+        <div class="gauge-card">
+
+            <div class="gauge">
+
+                <svg viewBox="0 0 300 300">
+                    <circle class="outer-ring"
+                        cx="150" cy="150" r="137"/>
+
+                    <circle class="inner-ring"
+                        cx="150" cy="150" r="112"/>
+
+                    <path class="gauge-arc"
+                        d="M 86 246 A 112 112 0 1 1 214 246"/>
+
+                    <circle
+                        id="distance-progress"
+                        class="progress"
+                        cx="150"
+                        cy="150"
+                        r="91"/>
+                </svg>
+
+                <div class="gauge-center">
+                    <div id="distance">0.00</div>
+                    <span>KM</span>
+                </div>
+
+                <div class="gauge-caption">DISTANCE</div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- TOTAL DISTANCE -->
+    <section class="trip-section">
+
+        <div class="arrows">◀</div>
+
+        <div class="trip-details">
+            <h2>TOTAL</h2>
+            <h3><span id="total-distance">0.00</span> KM</h3>
+        </div>
+
+        <div class="arrows">▶</div>
+
+    </section>
+
+
+    <!-- ADDITIONAL INFORMATION -->
+    <section class="stats">
+
+        <div>
+            <small>MAX SPEED</small>
+            <h3><span id="max-speed">0</span> km/h</h3>
+        </div>
+
+        <div>
+            <small>GPS ACCURACY</small>
+            <h3><span id="accuracy">--</span> m</h3>
+        </div>
+
+    </section>
+
+
+    <!-- GEAR DESIGN -->
+    <section class="gear-section">
+
+        <div class="gears">
+            <span>P</span>
+            <span>R</span>
+            <span>N</span>
+            <span class="active">D</span>
+            <span>S</span>
+        </div>
+
+        <small>GPS SPEED MODE</small>
+
+    </section>
+
+
+    <!-- BUTTONS -->
+    <section class="controls">
+
+        <button id="start-btn">
+            START GPS
+        </button>
+
+        <button id="reset-btn">
+            RESET TRIP
+        </button>
+
+    </section>
+
+
+    <!-- STATUS -->
+    <p id="message">
+        Press START GPS to begin.
+    </p>
+
+    <p id="save-status">
+        Cloud: Connecting...
+    </p>
+
+    <footer>
+        PULSAR 150 DIGITAL DASHBOARD
+    </footer>
+
+</div>
+
+</body>
+</html>

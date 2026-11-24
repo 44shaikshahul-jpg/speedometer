@@ -1,0 +1,350 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: #000;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboard {
+    width: 100%;
+    max-width: 1200px;
+    min-height: 100vh;
+    padding: 30px;
+    text-align: center;
+    background: radial-gradient(
+        circle,
+        #101800,
+        #030400 65%
+    );
+}
+
+/* TOP STATUS */
+
+.top-status {
+    display: flex;
+    justify-content: center;
+    gap: 70px;
+    padding: 10px;
+    font-size: 25px;
+    color: white;
+}
+
+/* GAUGES */
+
+.gauges {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.gauge-card {
+    width: 45%;
+}
+
+.gauge {
+    width: 100%;
+    max-width: 420px;
+    aspect-ratio: 1;
+    position: relative;
+    margin: auto;
+
+    border-radius: 50%;
+
+    background: radial-gradient(
+        circle,
+        #172500 0%,
+        #080b03 55%,
+        #252823 75%,
+        #050505 78%
+    );
+
+    box-shadow:
+        0 0 25px rgba(0, 0, 0, 1),
+        inset 0 0 25px #000;
+}
+
+.gauge svg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+}
+
+.outer-ring {
+    fill: none;
+    stroke: #292d25;
+    stroke-width: 8;
+}
+
+.inner-ring {
+    fill: none;
+    stroke: rgba(166,255,0,0.2);
+    stroke-width: 3;
+}
+
+.gauge-arc {
+    fill: none;
+    stroke: #c5ff00;
+    stroke-width: 2;
+}
+
+.progress {
+    fill: none;
+    stroke: #a7ff00;
+    stroke-width: 6;
+    stroke-linecap: round;
+
+    stroke-dasharray: 572;
+    stroke-dashoffset: 572;
+
+    transform: rotate(-130deg);
+    transform-origin: 150px 150px;
+
+    filter: drop-shadow(0 0 8px #a7ff00);
+    transition: stroke-dashoffset 0.3s;
+}
+
+/* DIGITAL DISPLAY */
+
+.gauge-center {
+    position: absolute;
+    top: 34%;
+    left: 34%;
+
+    width: 32%;
+    height: 32%;
+
+    border-radius: 50%;
+    background: #192700;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    box-shadow: inset 0 0 20px #000;
+}
+
+.gauge-center div {
+    font-size: clamp(28px, 5vw, 60px);
+    font-weight: 400;
+    color: white;
+}
+
+.gauge-center span {
+    font-size: 15px;
+    color: #b9c2a9;
+    margin-top: 8px;
+}
+
+.gauge-caption {
+    position: absolute;
+    bottom: 5%;
+    width: 100%;
+    color: #a7ff00;
+    font-size: 12px;
+    letter-spacing: 3px;
+}
+
+/* TOTAL DISTANCE */
+
+.trip-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+
+    margin: 25px auto;
+    padding: 20px;
+}
+
+.trip-details h2 {
+    font-size: 20px;
+}
+
+.trip-details h3 {
+    font-size: 22px;
+    margin-top: 8px;
+    font-weight: 400;
+}
+
+.arrows {
+    color: #a7ff00;
+    font-size: 30px;
+    text-shadow: 0 0 15px #a7ff00;
+}
+
+/* STATS */
+
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 70px;
+    margin: 15px;
+}
+
+.stats small {
+    color: #8d9a78;
+    font-size: 11px;
+}
+
+.stats h3 {
+    margin-top: 8px;
+    font-size: 17px;
+    font-weight: 400;
+}
+
+/* GEARS */
+
+.gear-section {
+    margin: 30px;
+}
+
+.gears {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.gears .active {
+    color: #fff;
+    text-shadow:
+        0 0 10px #a7ff00,
+        0 0 25px #a7ff00;
+}
+
+.gear-section small {
+    display: block;
+    margin-top: 10px;
+    color: #82906c;
+    font-size: 10px;
+}
+
+/* BUTTONS */
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+button {
+    padding: 13px 25px;
+    cursor: pointer;
+
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+
+    border: 1px solid #a7ff00;
+    background: #a7ff00;
+    color: #000;
+
+    transition: 0.3s;
+}
+
+#reset-btn {
+    background: transparent;
+    color: #a7ff00;
+}
+
+button:hover {
+    box-shadow: 0 0 20px #a7ff00;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* STATUS */
+
+#message {
+    margin-top: 20px;
+    font-size: 12px;
+    color: #c1c8b4;
+}
+
+#save-status {
+    margin-top: 8px;
+    font-size: 11px;
+    color: #a7ff00;
+}
+
+footer {
+    margin-top: 25px;
+    font-size: 10px;
+    color: #667052;
+    letter-spacing: 2px;
+}
+
+/* MOBILE */
+
+@media(max-width: 700px) {
+
+    .dashboard {
+        padding: 15px;
+    }
+
+    .top-status {
+        gap: 25px;
+        font-size: 18px;
+    }
+
+    .gauges {
+        gap: 10px;
+        margin-top: 40px;
+    }
+
+    .gauge-card {
+        width: 50%;
+    }
+
+    .gauge-center span {
+        font-size: 10px;
+    }
+
+    .gauge-caption {
+        font-size: 8px;
+    }
+
+    .trip-section {
+        margin-top: 35px;
+    }
+
+    .stats {
+        gap: 25px;
+    }
+
+    .stats h3 {
+        font-size: 13px;
+    }
+
+    .gears {
+        gap: 25px;
+        font-size: 20px;
+    }
+
+    button {
+        padding: 12px;
+        font-size: 9px;
+    }
+}
